@@ -1,0 +1,29 @@
+{
+  "name": "vinogradsoft/io-contract",
+  "description": "Ввод вывод",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "vinograd",
+      "email": "cmk.cmyk@mail.ru"
+    }
+  ],
+  "version": "1.0.0",
+  "minimum-stability": "stable",
+  "autoload": {
+    "psr-4": {
+      "Vinograd\\IO\\": [
+        "src/"
+      ]
+    }
+  },
+  "require": {
+    "php": ">=7.2"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  ]
+}
