@@ -2,11 +2,17 @@
 
 namespace Vinograd\IO;
 
-/**
- * @version 0.0.1
- */
+use Vinograd\IO\Exception\IOException;
+
 interface Filesystem
 {
+    /**
+     * @param string $path
+     * @return string
+     * @throws IOException
+     */
+    public function getAbsolutePath(string $path): string;
+
     /**
      * @param string $filename
      * @return bool
@@ -16,15 +22,15 @@ interface Filesystem
     /**
      * @param string $directory
      * @param int $permissions
-     * @return bool
+     * @throws IOException
      */
-    public function createDirectory(string $directory, int $permissions = 0777): bool;
+    public function createDirectory(string $directory, int $permissions = 0777): void;
 
     /**
      * @param string $directory
-     * @return bool
+     * @throws IOException
      */
-    public function removeDirectory(string $directory): bool;
+    public function removeDirectory(string $directory): void;
 
     /**
      * @param string $filename
@@ -34,46 +40,39 @@ interface Filesystem
 
     /**
      * @param string $filename
-     * @return string|false
+     * @return bool
      */
-    public function fileGetContents(string $filename);
+    public function isFile(string $filename): bool;
+
+    /**
+     * @param string $filename
+     * @return string
+     * @throws IOException
+     */
+    public function fileGetContents(string $filename): string;
 
     /**
      * @param string $filename
      * @param mixed $data
      * @param int $flags
-     * @param $context
-     * @return int|false
+     * @throws IOException
      */
-    public function filePutContents(string $filename, $data, int $flags = 0);
+    public function filePutContents(string $filename, $data, int $flags = 0): void;
 
     /**
      * @param string $filename
-     * @param mixed $context
-     * @return bool
+     * @throws IOException
      */
-    public function removeFile(string $filename): bool;
+    public function removeFile(string $filename): void;
 
     /**
      * @param $filename
      * @param int $pos
-     * @param null $ndocs
+     * @param null|mixed $ndocs
      * @param array $callbacks
-     * @return mixed|false
+     * @return mixed
+     * @throws IOException
      */
     public function yamlParseFile($filename, $pos = 0, &$ndocs = null, array $callbacks = []);
 
-    /**
-     * @param string $filename
-     * @param string|int $user
-     * @return bool
-     */
-    public function chown(string $filename, $user): bool;
-
-    /**
-     * @param string $filename
-     * @param string|int $group
-     * @return bool
-     */
-    public function chgrp(string $filename, $group): bool;
 }
