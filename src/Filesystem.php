@@ -14,6 +14,13 @@ interface Filesystem
     public function getAbsolutePath(string $path): string;
 
     /**
+     * @param string $path
+     * @return array
+     * @throws IOException
+     */
+    public function scanDirectory(string $path): array;
+
+    /**
      * @param string $filename
      * @return bool
      */
