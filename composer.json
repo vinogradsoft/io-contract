@@ -1,6 +1,6 @@
 {
   "name": "vinogradsoft/io-contract",
-  "description": "Ввод вывод",
+  "description": "Input Output",
   "license": "MIT",
   "authors": [
     {
@@ -8,7 +8,7 @@
       "email": "cmk.cmyk@mail.ru"
     }
   ],
-  "version": "1.0.0",
+  "version": "1.0.1",
   "minimum-stability": "stable",
   "autoload": {
     "psr-4": {
